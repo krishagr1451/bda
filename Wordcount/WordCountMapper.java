@@ -21,3 +21,20 @@ public class WordCountMapper extends Mapper<Object, Text, Text, IntWritable> {
         }
     }
 }
+/*
+Compile:
+javac -classpath `hadoop classpath` -d . *.java
+
+Create jar:
+jar -cvf wordcount.jar *.class
+
+Upload input to HDFS:
+hdfs dfs -mkdir -p /input
+hdfs dfs -put input.txt /input
+
+Run on Hadoop:
+hadoop jar wordcount.jar WordCountDriver /input /output
+
+View output:
+hdfs dfs -cat /output/part-r-00000
+*/

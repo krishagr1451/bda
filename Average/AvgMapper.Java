@@ -16,3 +16,20 @@ public class AvgMapper extends Mapper<Object, Text, Text, DoubleWritable> {
         context.write(word, new DoubleWritable(num));
     }
 }
+/*
+Compile:
+javac -classpath `hadoop classpath` -d . *.java
+
+Create jar:
+jar -cvf average.jar *.class
+
+Upload input to HDFS:
+hdfs dfs -mkdir -p /input
+hdfs dfs -put input.txt /input
+
+Run on Hadoop:
+hadoop jar average.jar <YourAvgDriver> /input /output
+
+View output:
+hdfs dfs -cat /output/part-r-00000
+*/

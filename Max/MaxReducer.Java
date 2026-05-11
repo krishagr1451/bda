@@ -21,3 +21,20 @@ public class MaxReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
         context.write(key, new IntWritable(max));
     }
 }
+/*
+Compile:
+javac -classpath `hadoop classpath` -d . *.java
+
+Create jar:
+jar -cvf max.jar *.class
+
+Upload input to HDFS:
+hdfs dfs -mkdir -p /input
+hdfs dfs -put input.txt /input
+
+Run on Hadoop:
+hadoop jar max.jar MaxDriver /input /output
+
+View output:
+hdfs dfs -cat /output/part-r-00000
+*/

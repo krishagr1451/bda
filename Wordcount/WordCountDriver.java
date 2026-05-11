@@ -28,17 +28,20 @@ public class WordCountDriver {
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }
-
 /*
+Compile:
 javac -classpath `hadoop classpath` -d . *.java
 
+Create jar:
 jar -cvf wordcount.jar *.class
 
-hdfs dfs -mkdir /input
-
+Upload input to HDFS:
+hdfs dfs -mkdir -p /input
 hdfs dfs -put input.txt /input
 
+Run on Hadoop:
 hadoop jar wordcount.jar WordCountDriver /input /output
 
+View output:
 hdfs dfs -cat /output/part-r-00000
 */
